@@ -1,0 +1,22 @@
+version: "2.0"
+services:
+  jenkins:
+    image: jenkins
+    ports:
+      - "5000:5000"
+      - "8080:8080"
+    volumes:
+      - /srv/dockercontainer/jenkins_home:/var/jenkins_home
+   
+  postgres:
+    container_name: postgres-9.4
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=database
+      - USERMAP_UID=999
+      - USERMAP_GID=999
+
